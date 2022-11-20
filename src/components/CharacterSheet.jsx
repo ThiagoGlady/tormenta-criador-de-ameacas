@@ -13,6 +13,29 @@ export default class CharacterSheet extends Component {
         return atkTypes[1];
     };
 
+    generateRandom = (min, max) => {
+        const randomNumber = Math.random()*(max-min);
+        return Math.floor(randomNumber) + min;
+    };
+
+    getDamage = (damage) => {
+        const arrayDados = [
+            {nome:'d4', media:2.5},
+            {nome:'d6', media:3.5},
+            {nome:'d8', media:4.5},
+            {nome:'d10', media:5.5},
+            {nome:'d12', media:6.5},
+        ];
+
+        const dadoObtido = arrayDados[this.generateRandom(0, arrayDados.length)];
+
+        const qntDadosPermitida = Math.floor(damage / dadoObtido.media);
+        const qntDadosGerada = this.generateRandom(1, qntDadosPermitida);
+        const atkBonus = Math.floor(damage - (qntDadosGerada * dadoObtido.media)); 
+        console.log(damage);
+        return `${qntDadosGerada}${dadoObtido.nome} + ${atkBonus}`;
+    }
+
     render() {
         const { randomSheet } = this.props;
 
@@ -36,7 +59,7 @@ export default class CharacterSheet extends Component {
             </div>
             <br />
             <div>
-                Defesa:
+                Defesa: { randomSheet.defense }
             </div>
             <br />
             <div>
@@ -53,7 +76,7 @@ export default class CharacterSheet extends Component {
             </div>
             <br />
             <div>
-                { `${this.getAttack(randomSheet)}: N` }
+                { `${this.getAttack(randomSheet)}: ${this.getDamage(randomSheet.damage)}` }
             </div>
             <br />
             <div>
