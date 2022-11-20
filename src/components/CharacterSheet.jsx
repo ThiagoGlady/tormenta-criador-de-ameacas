@@ -1,25 +1,20 @@
 import React, { Component } from "react";
-import makeRandomSheet from "../helpers/makeRandomSheet";
 
 export default class CharacterSheet extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            randomSheet: {},
-        }
-    }
+    getAttack = (sheet) => {
+        const atkTypes = [
+            'Ataque C. a C.',
+            'À Distância'
+        ];
 
-    componentDidMount() {
-        const { ND } = this.props;
+        if (sheet.function === 'Porradeiro') return atkTypes[0];
 
-        this.setState({
-            randomSheet: makeRandomSheet(+ND),
-        });
-    }
+        return atkTypes[1];
+    };
 
     render() {
-        const { randomSheet } = this.state;
+        const { randomSheet } = this.props;
 
         return (
         <div>
@@ -58,7 +53,7 @@ export default class CharacterSheet extends Component {
             </div>
             <br />
             <div>
-                Ataque C. a C. ou à Distância: 
+                { `${this.getAttack(randomSheet)}: N` }
             </div>
             <br />
             <div>

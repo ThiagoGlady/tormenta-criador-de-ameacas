@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CharacterSheet from "../components/CharacterSheet";
+import makeRandomSheet from "../helpers/makeRandomSheet";
 
 export default class SheetRandom extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ export default class SheetRandom extends Component {
         this.state = {
             ND: 0,
             showSheet: false,
+            randomSheet: {},
         }
     };
 
@@ -20,13 +22,17 @@ export default class SheetRandom extends Component {
     };
 
     showCharacter = () => {
+        const { ND } = this.state;
+        const randomSheet = makeRandomSheet(+ND); 
+
         this.setState({
             showSheet: true,
+            randomSheet,
         });
     }
     
     render() {
-        const { ND, showSheet } = this.state;
+        const { ND, showSheet, randomSheet } = this.state;
 
         return (
         <div>
@@ -51,7 +57,7 @@ export default class SheetRandom extends Component {
                 </button>
                 {
                     showSheet
-                    && (<CharacterSheet ND={ ND }/>)
+                    && (<CharacterSheet ND={ ND } randomSheet={ randomSheet }/>)
                 }
             </div>
         </div>
