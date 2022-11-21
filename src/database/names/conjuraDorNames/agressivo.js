@@ -1,10 +1,10 @@
 const Agressivo = [
-    'Feiticeiro Louco',
-    'Elfo Negro da Montanha',
-    'Elemental de Fogo',
-    'Elemental de Escuridão',
+    'Feiticeiro de Fogo',
+    'Artista da Escuridão',
+    'Mago das Lanças Mágicas',
+    'Duelista Arcano',
     'Bruxo das Lâminas Espirituais',
-    'Guerreiro Arcano Maligno',
+    'Mestre da Magia',
 ];
 
 export default Agressivo;

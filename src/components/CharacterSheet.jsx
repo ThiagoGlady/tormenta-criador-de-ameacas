@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import conjuraDorNames from "../database/names/conjuraDorNames/conjuraDorNames";
+import dilongeNames from "../database/names/dilongeNames/dilongeNames";
+import raceNames from "../database/names/raceNames";
 
 export default class CharacterSheet extends Component {
 
@@ -20,11 +22,19 @@ export default class CharacterSheet extends Component {
     };
 
     getName = (threatFunction, subFunction) => {
-        console.log(subFunction);
+        const randomRaceIndex = this.generateRandom(0, raceNames.length);
+        const randomRaceName = raceNames[randomRaceIndex];
+
         if (threatFunction === 'ConjuraDor') {
             const randomNameIndex = this.generateRandom(0, conjuraDorNames[subFunction].length);
             
-            return conjuraDorNames[subFunction][randomNameIndex];
+            return `${randomRaceName} ${conjuraDorNames[subFunction][randomNameIndex]}`;
+        }
+
+        if (threatFunction === 'Dilonge') {
+            const randomNameIndex = this.generateRandom(0, dilongeNames[subFunction].length);
+            
+            return `${randomRaceName} ${dilongeNames[subFunction][randomNameIndex]}`;
         }
 
         return 'Name';
