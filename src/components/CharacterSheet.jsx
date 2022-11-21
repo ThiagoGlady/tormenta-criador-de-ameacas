@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import shuffleArray from "../helpers/shuffleArray";
 import conjuraDorNames from "../database/names/conjuraDorNames/conjuraDorNames";
 import dilongeNames from "../database/names/dilongeNames/dilongeNames";
 import porradeiroNames from "../database/names/porradeiroNames/porradeiroNames";
@@ -20,6 +21,16 @@ export default class CharacterSheet extends Component {
     generateRandom = (min, max) => {
         const randomNumber = Math.random()*(max-min);
         return Math.floor(randomNumber) + min;
+    };
+
+    getResistences = (sheet) => {
+        const { weakRes, mediumRes, strongRes } = sheet;
+
+        const resValues = [ weakRes, mediumRes, strongRes ];
+
+        shuffleArray(resValues);
+
+        return resValues;
     };
 
     getName = (threatFunction, subFunction) => {
@@ -67,6 +78,7 @@ export default class CharacterSheet extends Component {
 
     render() {
         const { randomSheet } = this.props;
+        const resValues = this.getResistences(randomSheet);
 
         return (
         <div>
@@ -92,9 +104,11 @@ export default class CharacterSheet extends Component {
             </div>
             <br />
             <div>
-                Fortitude:
-                Reflexos:
-                Vontade:
+                Fortitude: {resValues[0]}
+                <br />
+                Reflexos: {resValues[1]}
+                <br />
+                Vontade: { resValues[2]}
             </div>
             <br />
             <div>
