@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import conjuraDorNames from "../database/names/conjuraDorNames/conjuraDorNames";
 
 export default class CharacterSheet extends Component {
 
@@ -18,6 +19,17 @@ export default class CharacterSheet extends Component {
         return Math.floor(randomNumber) + min;
     };
 
+    getName = (threatFunction, subFunction) => {
+        console.log(subFunction);
+        if (threatFunction === 'ConjuraDor') {
+            const randomNameIndex = this.generateRandom(0, conjuraDorNames[subFunction].length);
+            
+            return conjuraDorNames[subFunction][randomNameIndex];
+        }
+
+        return 'Name';
+    };
+
     getDamage = (damage) => {
         const arrayDados = [
             {nome:'d4', media:2.5},
@@ -32,7 +44,7 @@ export default class CharacterSheet extends Component {
         const qntDadosPermitida = Math.floor(damage / dadoObtido.media);
         const qntDadosGerada = this.generateRandom(1, qntDadosPermitida);
         const atkBonus = Math.floor(damage - (qntDadosGerada * dadoObtido.media)); 
-        console.log(damage);
+
         return `${qntDadosGerada}${dadoObtido.nome} + ${atkBonus}`;
     }
 
@@ -42,7 +54,7 @@ export default class CharacterSheet extends Component {
         return (
         <div>
             <div>
-                Nome
+                { this.getName(randomSheet.function, randomSheet.subFunction) }
             </div>
             <br />
             <div>

@@ -24,7 +24,7 @@ const makeRandomSheet = (ND) => {
     const newSheet = { ND };
 
     makeCoreData(newSheet, baseStatistic);
-    console.log(newSheet);
+
     return newSheet;
 };
 
