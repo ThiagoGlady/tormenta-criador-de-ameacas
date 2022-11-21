@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/tormenta-criador-de-ameacas/static/js/main.46ceebfa.js",
+    "static/js/787.2e47d947.chunk.js": "/tormenta-criador-de-ameacas/static/js/787.2e47d947.chunk.js",
+    "index.html": "/tormenta-criador-de-ameacas/index.html",
+    "main.46ceebfa.js.map": "/tormenta-criador-de-ameacas/static/js/main.46ceebfa.js.map",
+    "787.2e47d947.chunk.js.map": "/tormenta-criador-de-ameacas/static/js/787.2e47d947.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.46ceebfa.js"
+  ]
+}
